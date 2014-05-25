@@ -6,7 +6,10 @@ COMMON_DIRS += initialization
 .PHONY: all docs test
 
 all:
-	
+	for dir in $(COMMON_DIRS); do \
+	 (echo $$dir; cd $$dir; make)||exit;\
+	done
+
 test: all
 	
 
