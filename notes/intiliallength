@@ -1,0 +1,63 @@
+intilialization
+
+the purpose of this step is to know the length of the chromose and intiliaze it with the bool values
+
+we need following things for calculating the length
+precision
+no of dimension
+ranges of each dimension
+
+we start setting up a domain vector(adomain)
+in which we set domain for ever dimension...if there are 3 dimension then domain will be equal to 3*2
+e.g for the first dimension it could be {0}...[3]
+the second dimension coul be [4].....[8]
+
+then we made a class chromosome_length.h..In which we introduce the constructor chromosome_length which takes in three parameters
+aPrecision
+aNDIM
+aDomain
+
+Chromosome_Length::Chromosome_Length(unsigned int aPrecision,
+
+                                     unsigned int aNDIM,
+
+                                     std::vector<double>& adomain):thePrecision(aPrecision), theNDIM(aNDIM), domain(adomain)
+
+{
+
+   if(theNDIM != domain.size()/2)
+
+   {
+
+      //Throw exception
+
+   }
+
+}
+ in this constructor we throw an exception if the domain size is not divisible by 2 then program will generate an error
+
+
+
+in the following method which is called build chromosome
+we are incoporating two steps here  in the first step we start with calculation the length of the first dimension.That lenght is computed by using a method computelength 
+unsigned int Chromosome_Length::computeLength(double aLowerLimit, 
+                                              double anUpperLimit)
+{
+   unsigned int length = 0;
+   
+   double total = (anUpperLimit - aLowerLimit)*std::pow(10, thePrecision);
+   
+   while(total > std::pow(2, length)) length++;
+   
+   return length;
+
+here it compute the length of the first dimension and goes back to it's original method 
+	
+unsigned int length = computeLength(domain[2*i], domain[2*i+1]);
+         theLengths.push_back(length);
+         chromosomeLength += length;
+
+the compute length will transfer it values to length which then will be stored in another vector called theLengths
+the chromosomeLength will actually tell the total lengthe of the whole chromosome
+theChromosome.reserve(chromosomeLength);
+then the chromosomeLength is used as a total size of the another vector of bool know as theChromosome
