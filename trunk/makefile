@@ -1,4 +1,4 @@
-
+# Top level makefile
 
 COMMON_DIRS = utilities
 COMMON_DIRS += initialization

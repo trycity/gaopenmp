@@ -1,0 +1,12 @@
+# makefile.common
+
+CXX = g++
+
+# C++ flags
+CXXFLAGS = -MD
+CXXFLAGS += -Wall
+CXXFLAGS += -Werror
+CXXFLAGS += -m64
+CXXFLAGS += -O2
+CXXFLAGS += -fopenmp
+CXXFLAGS += -std=c++11
