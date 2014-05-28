@@ -1,6 +1,13 @@
+# utilities makefile
+
+include ../makefile.common
+
+CXXFLAGS += -c
+
+
 all:
-#	g++ main.cpp -o main.exe
-
-test:
+#	$(CXX) $(CXXFLAGS) *.cpp
 
 
+clean:
+	rm -rf *.o *.d
