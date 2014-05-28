@@ -1,0 +1,20 @@
+Making makefile for all dierctories
+
+we need to have make file in each of the directories before start buiding up make file...in this case we are only dealing with two directories utilities and initilization each of them has their own makefile.The initialization make file includes the makefile common(including all kind of flags) and -c for compiling .cpp files and -I falg to include utilities file(or nay file you want to add)
+then it has target name like all and clean.
+
+then we need to create  top most makefile in ourr case it is in gaopenmp. it includes
+
+COMMON_DIRS = utilities
+COMMON_DIRS += initialization
+
+
+COMMON_DIRS.....  is in actually matrice..... it has utilities and intilaization as it matrice or vector memeber.Here += is justa adding intilaization as the seconf elemnt of the vector
+
+.PHONY: all docs test
+phony targets just make sure thath makefile while running deos not worry anout the time stamp of any file in consideration.
+all:
+	for dir in $(COMMON_DIRS); do \
+	 (echo $$dir; cd $$dir; make)||exit;\
+	done
+it a for loop for just giving a command to each makefile within the directories...so that it runs it by just writing make in the top most file.we also write similar for loop for clean target...the only differnce is that instead of writing make we wrote make clean.

@@ -17,3 +17,7 @@ docs:
 	doxygen Doxyfile
 	zip -r docs/GA_Documentation docs/latex/ docs/html/
 
+clean: 
+	for dir in $(COMMON_DIRS); do \
+	 (echo $$dir; cd $$dir; make clean)||exit;\
+	done
