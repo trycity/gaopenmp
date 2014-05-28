@@ -10,7 +10,10 @@ all:
 	 (echo $$dir; cd $$dir; make)||exit;\
 	done
 
-test: all
+test:
+	for dir in $(COMMON_DIRS); do \
+	 (echo $$dir; cd $$dir; make test)||exit;\
+	done
 	
 
 docs:
