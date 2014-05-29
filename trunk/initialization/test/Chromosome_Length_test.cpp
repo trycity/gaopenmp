@@ -4,6 +4,7 @@
 #endif // UNIT_TEST
 
 #include <iostream>
+#include <exception>
 
 #include "Chromosome_Length_test.h"
 #include "Chromosome_Length.h"
