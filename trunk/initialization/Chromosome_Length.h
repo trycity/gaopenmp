@@ -50,9 +50,9 @@ private:
 
    std::vector<unsigned int> theLengths;
 
-//#ifdef UNIT_TEST
-//   friend class Chromosome_Length_Test;
-//#endif
+#ifdef UNIT_TEST
+   friend class Chromosome_Length_Test;
+#endif
    
 };
 
