@@ -4,6 +4,7 @@
 #endif // UNIT_TEST
 
 #include <iostream>
+#include <vector>
 #include <exception>
 
 #include "Chromosome_Length_test.h"
@@ -21,54 +22,51 @@ void Chromosome_Length_test::runTests()
 {
 	std::cout<<"Running testBuildChromosome"<<std::endl;
 	testBuildChromosome();
-	std::cout<<"Success"<<std::endl;
-
+	std::cout<<"Success"<<std::endl<<std::endl;
+	
 	std::cout<<"Running testComputeLength"<<std::endl;
 	testComputeLength();
-	std::cout<<"Success"<<std::endl;
+	
 }
 
 void Chromosome_Length_test::testBuildChromosome()
 {
+	
 }
 
 void Chromosome_Length_test::testComputeLength()
 {
+	// build the parameter for the chromosome length ctor
+	unsigned int nDim = 3;
+	unsigned int aPrecision = 6;
+	std::vector<double> domain;
+	
+	for(unsigned i=0; i<2*nDim; ++i)
+	{
+		domain.push_back(2*i+i);
+	}
+
+	Chromosome_Length chrom_length(aPrecision,
+									 nDim,
+									 domain);
+
+	try
+	{
+		unsigned int dim_Length = chrom_length.computeLength(domain[0], domain[1]);
+		
+		if(dim_Length != 22)
+		{
+			throw int(dim_Length);
+		}
+		else
+		{
+			std::cout<<"SUCCESS: Chromosome_Length_test::testComputeLength()"<<std::endl<<std::endl;
+		}
+	}
+	catch(int length)
+	{
+		std::cout<<"FAILURE: Chromosome_Length_test::testComputeLength()"<<std::endl<<std::endl;
+	}
 }
 
 
-
-
-
-
-
-
-/*#include <iostream>
-#include "Chromosome_Length.h"
-
-using namespace std;
-
-int main()
-{
-   std::vector<double> adomain;
-   adomain.push_back(1.0);
-   adomain.push_back(2.0);   
-   adomain.push_back(3.0);
-   adomain.push_back(6.0);
-   adomain.push_back(8.0);
-   adomain.push_back(16.0);   
-
-   unsigned int aNDIM = 2;
-   unsigned int aPrecision = 2;
-   
-   Chromosome_Length aChromosomeLength(aPrecision, aNDIM, adomain);
-	
-	aChromosomeLength.buildChromosome();
-   
- vector<unsigned int> length = aChromosomeLength.getLength();
-
-   cout<<"length[0] = "<<length[0]<<endl;
-   cout<<"length[1] = "<<length[1]<<endl;
-   cout<<"length[2] = "<<length[2]<<endl;
-   return 0; 
-}*/

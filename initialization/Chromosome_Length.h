@@ -1,7 +1,7 @@
-// class for Chromosome_Length
 /**
- @file Chromosome_Length.h
-*/
+ * @file Chromosome_Length.h
+ * @author zshahid
+ */
 
 #ifndef CHROMOSOME_LENGTH_H
 #define CHROMOSOME_LENGTH_H
@@ -51,7 +51,7 @@ private:
    std::vector<unsigned int> theLengths;
 
 #ifdef UNIT_TEST
-   friend class Chromosome_Length_Test;
+   friend class Chromosome_Length_test;
 #endif
    
 };
