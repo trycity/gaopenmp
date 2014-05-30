@@ -6,10 +6,12 @@
 
 int main()
 {
-   std::cout<<"Creating Chromosome Length Test object..."<<std::endl;
+   std::cout<<"Begin initialization tests"<<std::endl<<std::endl;
+   
    Chromosome_Length_test aTestObject;
    aTestObject.runTests();
-   std::cout<<"End of test"<<std::endl;
+
+   std::cout<<"End of initialization tests"<<std::endl<<std::endl;
 
    return 0;
 }
