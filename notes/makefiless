@@ -9,12 +9,22 @@ COMMON_DIRS = utilities
 COMMON_DIRS += initialization
 
 
-COMMON_DIRS.....  is in actually matrice..... it has utilities and intilaization as it matrice or vector memeber.Here += is justa adding intilaization as the seconf elemnt of the vector
+COMMON_DIRS.....  is in actually array..... it has utilities and intilaization as it matrice or vector memeber.Here += is justa adding intilaization as the seconf elemnt of the vector
 
 .PHONY: all docs test
-phony targets just make sure thath makefile while running deos not worry anout the time stamp of any file in consideration.
+phony targets just make sure that makefile while running deos not worry anout the time stamp of any file in consideration.
 all:
 	for dir in $(COMMON_DIRS); do \
 	 (echo $$dir; cd $$dir; make)||exit;\
 	done
 it a for loop for just giving a command to each makefile within the directories...so that it runs it by just writing make in the top most file.we also write similar for loop for clean target...the only differnce is that instead of writing make we wrote make clean.
+
+
+//FOR TESTING THE FILES IN DIRECTORIES
+in order to run test for the files included in these directories...we need to add test for loop in the topmost makefile...we just added the for loop for writing the make test command on the main terminal
+
+however in the initilization directory we made test dependant upon all
+(CXX) $(CXXFLAGS) -c -I../$(DIRECTORY) test/*.cpp
+
+this line actually compile the files inand -I../$(DIRECTORY) is a path to the directory for finding the files  which are actually not the part of the test directory...In our case the the test directory has the test file where as the .h file is in the initialization which is directed over there thought the above mentioned file...
+
