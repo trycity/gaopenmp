@@ -57,6 +57,7 @@ private:
    POPULATION mPopulation;
 };
 
-
+#ifdef UNIT_TEST
+   friend class Population_test;
 #endif // POPULATION_HEADER
 

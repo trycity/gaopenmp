@@ -19,12 +19,13 @@ Population::~Population()
 {
    std::default_random_engine generator;
 	std::uniform_int_distribution<int> distribution(0,1);
-
+	unsigned int y = mPopulation.size;
  
 	for(unsigned int i =0; i< mSizeOfPopulation; i++)
 	{
+      
 		std::cout<<"Chromosome number = "<<i<<" : ";
-		for(int j=0; j<10; j++ )
+		for(unsigned int j=0; j<y; j++ )
 		{
 			mPopulation[i][j]=static_cast<bool>(distribution(generator));
           std::cout<< mPopulation[i][j];
