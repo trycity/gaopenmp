@@ -19,7 +19,7 @@ Population::~Population()
 {
    std::default_random_engine generator;
 	std::uniform_int_distribution<int> distribution(0,1);
-	unsigned int y = mPopulation.size;
+	unsigned int y = mPopulation.size();
  
 	for(unsigned int i =0; i< mSizeOfPopulation; i++)
 	{
