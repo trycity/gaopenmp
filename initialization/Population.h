@@ -55,9 +55,13 @@ private:
 
    /// array of chromosomes
    POPULATION mPopulation;
-};
 
 #ifdef UNIT_TEST
    friend class Population_test;
+#endif //UNIT_TEST
+
+};
+
+
 #endif // POPULATION_HEADER
 
