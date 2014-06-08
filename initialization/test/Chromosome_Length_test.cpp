@@ -26,7 +26,7 @@ void Chromosome_Length_test::runTests()
 	
 	std::cout<<"Running testComputeLength"<<std::endl;
 	testComputeLength();
-	
+	std::cout<<"Success"<<std::endl<<std::endl;	
 }
 
 void Chromosome_Length_test::testBuildChromosome()
@@ -80,6 +80,10 @@ void Chromosome_Length_test::testComputeLength()
 	catch(int length)
 	{
 		std::cout<<"FAILURE: Chromosome_Length_test::testComputeLength()"<<std::endl<<std::endl;
+	}
+   catch(...)
+   {
+      std::cout<<"FAILURE: General Failure"<<std::endl<<std::endl;
 	}
 }
 

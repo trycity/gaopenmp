@@ -15,8 +15,6 @@ private:
 
 	void testInitialization();
 
-	void testgetPopulation();
-
 };
 
 #endif // POPULATION_TEST_H

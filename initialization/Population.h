@@ -6,16 +6,9 @@
 #ifndef POPULATION_HEADER
 #define POPULATION_HEADER
 
-//#include <bitset>
 
 #include "GA_Typedefs.h"
 
-
-/// the chromosome length
-// const unsigned int ChromosomeLength = 16;
-//typedef std::bitset<ChromosomeLength> Chromosome;
-
-//typedef std::vector<Chromosome> POPULATION;
 
 class Population
 {
@@ -47,7 +40,8 @@ public:
     * @return The population
     */
    POPULATION& getPopulation();
-	 void  Initialization();
+
+   void  Initialization();
 
 private:
    /// Population size
