@@ -30,8 +30,22 @@ void Chromosome_Length_test::runTests()
 }
 
 void Chromosome_Length_test::testBuildChromosome()
-{
+{  unsigned int nDim = 3;
+	unsigned int aPrecision = 6;
+	std::vector<double> domain;
 	
+	for(unsigned i=0; i<2*nDim; ++i)
+	{
+		domain.push_back(2*i+i);
+	}
+
+	Chromosome_Length chrom_length(aPrecision,
+									 nDim,
+									 domain);
+	
+	chrom_length.buildChromosome();
+   Chromosome chrom = chrom_length.getChromosome();
+	std:: cout<< "the total length of the chromosome = "<< chrom.size()<< std::endl;
 }
 
 void Chromosome_Length_test::testComputeLength()

@@ -42,7 +42,7 @@ void Chromosome_Length::buildChromosome()
       }
    }
 
-   theChromosome.reserve(chromosomeLength);
+   theChromosome.resize(chromosomeLength);
 }
 
 unsigned int Chromosome_Length::computeLength(double aLowerLimit, 
