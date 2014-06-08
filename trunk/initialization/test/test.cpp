@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Chromosome_Length_test.h"
+#include "Population_test.h"
 
 
 int main()
@@ -10,8 +11,12 @@ int main()
    
    Chromosome_Length_test aTestObject;
    aTestObject.runTests();
-
+   Population_test aPopObject;
+	aPopObject.runTests();
    std::cout<<"End of initialization tests"<<std::endl<<std::endl;
+   
 
+    
+  
    return 0;
 }
