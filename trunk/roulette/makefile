@@ -14,7 +14,7 @@ test: all
 	$(CXX) $(CXXFLAGS) *.o -o test/$(DIRECTORY)
 
 clean:
-	rm -rf *.o *.d
+	rm -rf *.o *.d *.gch
 	rm -rf test/$(DIRECTORY)
 	
    
