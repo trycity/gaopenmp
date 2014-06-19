@@ -2,6 +2,8 @@
 
 COMMON_DIRS = utilities
 COMMON_DIRS += initialization
+COMMON_DIRS += roulette
+
 
 .PHONY: all docs test
 
