@@ -29,29 +29,37 @@ class Roulette
       double totalFitness;
       double cummulativeProb;
       std:: vector<double> cum_prob_vector;
-      Fittness_value fitness(mlength, mNDIM, mdomain, mfunction);
+      Fittness_value<T> fitness(mlength, mNDIM, mdomain, mfunction);
 
-      for(int i=0, i < fpop.size(), i++)   
+      
+     for(int i=0; i < fpop.size(); i++)   
       {
          FitnessVector[i]= fitness.computeValue();
          totalFitness += FitnessVector[i];
+       }  
+    for(int i=0; i < fpop.size(); i++)   
+      {   
          probalityVector[i]= FitnessVector[i]/totalFitness;
          cummulativeProb +=probalityVector[i];
-         cum_prob_vector = cummulativeProb;
+         cum_prob_vector[i] = cummulativeProb;
       }
-    
-   for(int i=0, i <fpop.size(), i++ )   
+      unsigned int totallength = 0;
+      for( unsigned int i =0; i <mNDIM; i++)
+       {
+          totallength += mlength[i];
+       }
+   for(int i=0; i <fpop.size(); i++ )   
     {   
          std::default_random_engine generator;
          std::uniform_real_distribution<double> distribution(0.0,1.0);
          std::vector<double> randomvector;
          
          randomvector[i] = distribution(generator);
-         count=0;
-         while(randomvector[i] > cum_prob_vector[count] count++);
-          for(j=0; j<mlength; j++) 
+         int count=0;
+         while(randomvector[i] > cum_prob_vector[count]) {count++;};
+          for(unsigned int j=0; j< totallength; j++) 
            {   
-             mPop[i][j]=mPop[count][j];
+             fpop[i][j]= fpop[count][j];
            }
     }
 

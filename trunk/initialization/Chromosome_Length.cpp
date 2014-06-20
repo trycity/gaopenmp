@@ -36,6 +36,7 @@ void Chromosome_Length::buildChromosome()
       #pragma omp for
       for(unsigned int i=0; i<theNDIM; ++i)
       {
+         
          unsigned int length = computeLength(domain[2*i], domain[2*i+1]);
          theLengths.push_back(length);
          chromosomeLength += length;
