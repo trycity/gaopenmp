@@ -3,10 +3,16 @@
 CXX = g++
 
 # C++ flags
-CXXFLAGS = -MD
+
+ARCH := $(shell getconf LONG_BIT)
+
+CXX_FLAGS_32 := -m32
+CXX_FLAGS_64 := -m64
+
+CXXFLAGS := $(CXX_FLAGS_$(ARCH))
+CXXFLAGS += -MD
 CXXFLAGS += -Wall
 CXXFLAGS += -Werror
-CXXFLAGS += -m64
 CXXFLAGS += -O2
 CXXFLAGS += -fopenmp
 CXXFLAGS += -std=c++11
