@@ -6,14 +6,14 @@
 #include <string>
 #include <map>
 
-<template class T>
+template <class T>
 class TestWriter
 {
 public:
 	TestWriter(T& aTestClass);
 	~TestWriter();
 	
-	void registerTest(std::string aTestName);
+	void registerTest(T& aTestClass);
 	
 	void runTests();
 	
@@ -28,19 +28,31 @@ private:
 
 //////////////////IMPLEMENTATION/////////////////////
 
-<template class T>
-TestWriter::TestWriter(T& aTestClass):mTestClass(aTestClass)
+template <class T>
+TestWriter<T>TestWriter(T& aTestClass):mTestClass(aTestClass)
 {
 }
 
-<template class T>
-TestWriter::TestWriter()
+template <class T>
+TestWriter<T>::~TestWriter()
 {
 }
 
-void TestWriter::registerTest(std::string aTestName)
+template <class T>
+void TestWriter<T>::registerTest(T& aTestClass)
 {
-	mTestNames[aTestName] = false;
+	mTestNames[aTestClass] = false;
+}
+
+template <class T>
+void TestWriter<T>::logTests()
+{
+}
+
+template <class T>
+void TestWriter<T>::runTests()
+{
+	mTestClass.runTests();
 }
 
 
