@@ -28,7 +28,7 @@ docs:
 
 analysis: clean
 	for dir in $(SOURCE_DIRS); do \
-	(mkdir logs/$$dir; cppcheck --enable=warning,information --check-config --suppress=missingIncludeSystem -Iutilities -Iinitialization $$dir > logs/$$dir/cppcheck_results.txt)||exit;\
+	(mkdir logs/$$dir; cppcheck --enable=warning,information --check-config --suppress=missingIncludeSystem -Iutilities -I$$dir $$dir > logs/$$dir/cppcheck_results.txt)||exit;\
 	done
 	
 clean: 
