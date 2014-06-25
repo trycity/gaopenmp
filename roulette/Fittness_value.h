@@ -109,7 +109,15 @@ class Fittness_value
 
    /// The function over which the Genetic Algorithm will perform its search
 	T& mfunction;
+
+
+
+#ifdef UNIT_TEST
+   friend class Fitness_test;
+#endif //UNIT_TEST
+
 };
+
 
 #endif // FITTNESS_VALUE_H
 
