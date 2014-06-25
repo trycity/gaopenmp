@@ -14,20 +14,19 @@
 class Chromosome_Length
 {
 public:
-
    /// ctor
    Chromosome_Length(unsigned int aPrecision, 
                      unsigned int aNDIM, 
-                     std::vector<double>& adomain);
+                     const std::vector<double>& adomain);
 
    /// dtor
    ~Chromosome_Length();
 
    /// chromosome accessor
-   Chromosome getChromosome() const;
+   Chromosome getChromosome();
 
    /// accessor
-   std::vector<unsigned int> getLength() const
+   std::vector<unsigned int> getLength()
    {
       return theLengths;
    }
@@ -44,7 +43,7 @@ private:
 
    unsigned int theNDIM;
 
-   std::vector<double>& domain;
+   const std::vector<double>& domain;
 
    Chromosome theChromosome; 
 

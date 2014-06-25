@@ -11,7 +11,7 @@
 
 Chromosome_Length::Chromosome_Length(unsigned int aPrecision, 
                                      unsigned int aNDIM, 
-                                     std::vector<double>& adomain):thePrecision(aPrecision), theNDIM(aNDIM), domain(adomain)
+                                     const std::vector<double>& adomain):thePrecision(aPrecision), theNDIM(aNDIM), domain(adomain)
 {
    if(theNDIM != domain.size()/2)
    {
@@ -23,7 +23,7 @@ Chromosome_Length::~Chromosome_Length()
 {
 }
 
-Chromosome Chromosome_Length::getChromosome() const
+Chromosome Chromosome_Length::getChromosome()
 {
    return theChromosome;
 }
