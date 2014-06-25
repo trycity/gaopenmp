@@ -49,16 +49,16 @@ void Fitness_test::testFitness()
 		{
          if(i%2==0)
            {
-              achromosome.push_back(true);
+              achromosome[i]=true;
             }
          else
-             achromosome.push_back(false); 
+             achromosome[i]=false;
        }
    
    Function afunction;
     Fittness_value<Function> fitness(length, aNDIM, adomain, afunction);
     double result;
     result = fitness.computeValue(achromosome);
-   std:: cout << "the final vale is" << result << std::endl; 
+   std:: cout << "the final vale is = " << result << std::endl; 
  }  
 

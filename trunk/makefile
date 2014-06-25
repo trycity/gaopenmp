@@ -10,7 +10,7 @@ ARTIFACT_DIRS = logs
 ARTIFACT_DIRS += docs
 
 
-.PHONY: all docs test analysis clean
+.PHONY: all docs test analysis clean memcheck artifacts
 
 all:
 	for dir in $(COMMON_DIRS); do \
@@ -26,10 +26,20 @@ docs:
 	doxygen Doxyfile
 	zip -r docs/GA_Documentation docs/latex/ docs/html/
 
-analysis: clean
+analysis:
 	for dir in $(SOURCE_DIRS); do \
-	(mkdir logs/$$dir; cppcheck --enable=warning,information --check-config --suppress=missingIncludeSystem -Iutilities -I$$dir $$dir > logs/$$dir/cppcheck_results.txt)||exit;\
+	(cppcheck --enable=warning,information --check-config --suppress=missingIncludeSystem -Iutilities -I$$dir \
+	$$dir > logs/$$dir/cppcheck_results.txt)||exit;\
 	done
+
+artifacts: buildLogs analysis memcheck
+
+buildLogs: clean
+	for dir in $(COMMON_DIRS); do \
+	(mkdir logs/$$dir)||exit;\
+	done
+
+memcheck:
 	
 clean: 
 	for dir in $(COMMON_DIRS); do \
