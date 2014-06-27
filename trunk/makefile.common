@@ -13,6 +13,11 @@ CXXFLAGS := $(CXX_FLAGS_$(ARCH))
 CXXFLAGS += -MD
 CXXFLAGS += -Wall
 CXXFLAGS += -Werror
+ifeq ("$(DEBUG)", "y")
+CXXFLAGS += -g
+else
+CXXFLAGS += -DNDEBUG
 CXXFLAGS += -O2
+endif
 CXXFLAGS += -fopenmp
 CXXFLAGS += -std=c++11

@@ -5,10 +5,10 @@ COMMON_DIRS += initialization
 COMMON_DIRS += roulette
 
 SOURCE_DIRS = initialization
+SOURCE_DIRS += roulette
 
 ARTIFACT_DIRS = logs
 ARTIFACT_DIRS += docs
-
 
 .PHONY: all docs test analysis clean memcheck artifacts
 
@@ -28,10 +28,11 @@ docs:
 
 analysis:
 	for dir in $(SOURCE_DIRS); do \
-	(cppcheck --enable=warning,information --check-config --suppress=missingIncludeSystem -Iutilities -I$$dir \
+	(cppcheck --enable=warning,information --check-config --suppress=missingIncludeSystem -Iutilities -Iinitialization -I$$dir \
 	$$dir > logs/$$dir/cppcheck_results.txt)||exit;\
 	done
 
+# run with DEBUG=y on command line
 artifacts: buildLogs analysis memcheck
 
 buildLogs: clean
@@ -39,7 +40,12 @@ buildLogs: clean
 	(mkdir logs/$$dir)||exit;\
 	done
 
-memcheck:
+# run with DEBUG=y on command line
+memcheck: test
+	for dir in $(SOURCE_DIRS); do \
+	(valgrind --leak-check=yes $$dir/test/$$dir > logs/$$dir/memcheck_results.txt 2>&1)||exit;\
+	done
+	
 	
 clean: 
 	for dir in $(COMMON_DIRS); do \
