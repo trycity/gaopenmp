@@ -37,7 +37,7 @@ artifacts: buildLogs analysis memcheck
 
 buildLogs: clean
 	for dir in $(COMMON_DIRS); do \
-	(mkdir logs/$$dir)||exit;\
+	(mkdir -p logs/$$dir)||exit;\
 	done
 
 # run with DEBUG=y on command line
