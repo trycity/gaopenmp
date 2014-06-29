@@ -1,5 +1,11 @@
+
+
+
+
+
 #include <vector>
 #include <iostream>
+
 #include "GA_Typedefs.h"
 #include "Function.h"
 #include "Chromosome_Length.h"
@@ -20,8 +26,28 @@ void Roulette_test::runTests()
 	std::cout<<"Running test"<<std::endl;
 	
    testRoulette();
+   void printFarm(POPULATION& anObject);
 	std::cout<<"Success"<<std::endl<<std::endl;	
 }
+    
+void Roulette_test::printFarm(POPULATION& anObject)
+{
+
+	unsigned int chromSize = anObject[0].size();
+   
+for(unsigned int i =0; i<anObject.size(); i++)
+	{
+		std::cout<<"Chromosome number = "<<i<<" : ";
+		for(unsigned int j=0; j<chromSize; j++ )
+		{	
+          std::cout<< anObject[i][j];
+		}
+		std::cout<<std::endl;
+	}	
+
+}
+
+
 
 void Roulette_test::testRoulette()
 
@@ -45,9 +71,27 @@ void Roulette_test::testRoulette()
    length = chrom.getLength();
    Chromosome achromosome = chrom.getChromosome();
    Population aPop(size, achromosome);
+
+	aPop.Initialization();
+
+	std::cout<<"Initial population"<<std::endl<<std::endl;
+	printFarm(aPop.getPopulation());
     
     Function afunction;
-    //Fittness_value<T> fitness(length, aNDIM, adomain, afunction);
+    
    Roulette<Function> select( aPop, length, aNDIM, adomain, afunction);
    select.spinWheel();
+
+	std::cout<<"Final population"<<std::endl;
+	printFarm(aPop.getPopulation());
 }
+
+
+
+
+
+
+
+
+
+

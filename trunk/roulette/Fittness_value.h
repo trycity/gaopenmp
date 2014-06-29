@@ -8,6 +8,8 @@
 
 #include <vector>
 #include <cmath>
+#include <iostream>
+
 #include "GA_Typedefs.h"
 
 
@@ -42,12 +44,14 @@ class Fittness_value
     */
 	double computeValue(Chromosome& achromosome)
    {
+		
       // create iterators
       // set iterators to initial dimension in chromosome
       Chromosome::const_iterator beginIt = achromosome.begin();  
  
       std::vector<double> values(mNDIM, 0.0);
-   
+  
+		
       for(int i=0; i<mNDIM; i++)
       {
          std::vector<bool>::const_iterator secondIt = std::next(beginIt, mlength[i]);  
@@ -55,12 +59,15 @@ class Fittness_value
          double lowerLimit = mdomain[2*i];
          double upperLimit = mdomain[2*i+1];
 
+			
          values[i] = computeCoordinateValue(beginIt, secondIt, lowerLimit, upperLimit);
-      
+      	
          beginIt = secondIt++;
       }
    
+		
    	double result = mfunction(values);
+		
       return result;
    }
    
