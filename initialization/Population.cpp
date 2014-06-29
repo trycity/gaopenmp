@@ -24,11 +24,11 @@ Population::~Population()
 	for(unsigned int i =0; i< mSizeOfPopulation; i++)
 	{
       
-		std::cout<<"Chromosome number = "<<i<<" : ";
+	
 		for(unsigned int j=0; j<Chrom_size; j++ )
 		{
 			mPopulation[i][j]=static_cast<bool>(distribution(generator));
-          std::cout<< mPopulation[i][j];
+         
 		}
 		std::cout<<std::endl;
 	}	
