@@ -1,5 +1,7 @@
-#include "Population.h"
 
+
+#include "Population.h"
+#include <omp.h>
 #include <vector>
 #include<iostream>
 #include <random>
@@ -21,16 +23,13 @@ Population::~Population()
 	std::uniform_int_distribution<int> distribution(0,1);
 	unsigned int Chrom_size = mPopulation[0].size();
  
-	for(unsigned int i =0; i< mSizeOfPopulation; i++)
-	{
-      
-	
-		for(unsigned int j=0; j<Chrom_size; j++ )
+	#pragma omp parallel for collapse(2)
+   for(unsigned int i =0; i< mSizeOfPopulation; i++)
+   {
+		for(unsigned int j=0; j<Chrom_size; j++)
 		{
-			mPopulation[i][j]=static_cast<bool>(distribution(generator));
-         
+      	mPopulation[i][j]=static_cast<bool>(distribution(generator));
 		}
-		std::cout<<std::endl;
 	}	
 }
 	
