@@ -41,6 +41,9 @@ public:
     */
    POPULATION& getPopulation();
 
+	/**
+	 * Create initial values for chromosomes
+	 */
    void  Initialization();
 
 private:
