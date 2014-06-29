@@ -26,15 +26,15 @@ class Roulette
       POPULATION& fpop = mPop.getPopulation();
       std::vector<double> FitnessVector;
       std::vector<double> probalityVector;
-      double totalFitness;
-      double cummulativeProb;
+      double totalFitness =0.0;
+      double cummulativeProb = 0.0;
       std:: vector<double> cum_prob_vector;
       Fittness_value<T> fitness(mlength, mNDIM, mdomain, mfunction);
 
       
      for(int i=0; i < fpop.size(); i++)   
       {
-         FitnessVector[i]= fitness.computeValue();
+         FitnessVector[i]= fitness.computeValue(fpop[i]);
          totalFitness += FitnessVector[i];
        }  
     for(int i=0; i < fpop.size(); i++)   
@@ -48,23 +48,30 @@ class Roulette
        {
           totallength += mlength[i];
        }
-   for(int i=0; i <fpop.size(); i++ )   
-    {   
+   
          std::default_random_engine generator;
          std::uniform_real_distribution<double> distribution(0.0,1.0);
-         std::vector<double> randomvector;
+         std::vector<double> randomvector(fpop.size(), 0.0);
+        
+        
+
+        for(int i=0; i <fpop.size(); i++ )   
+        {   
          
          randomvector[i] = distribution(generator);
          int count=0;
+      
          while(randomvector[i] > cum_prob_vector[count]) {count++;};
+          if(count!=i)
+          {
           for(unsigned int j=0; j< totallength; j++) 
            {   
              fpop[i][j]= fpop[count][j];
            }
-    }
-
-
-   }
+          }
+        
+        }
+  }
 
 
    private:
@@ -73,6 +80,10 @@ class Roulette
       unsigned int mNDIM;
       const std::vector<double> & mdomain;
       T& mfunction;
+
+#ifdef UNIT_TEST
+   friend class Roulette_test;
+#endif //UNIT_TEST
 
 };
 #endif // ROULETTE_H

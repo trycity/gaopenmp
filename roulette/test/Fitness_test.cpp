@@ -59,6 +59,6 @@ void Fitness_test::testFitness()
     Fittness_value<Function> fitness(length, aNDIM, adomain, afunction);
     double result;
     result = fitness.computeValue(achromosome);
-   std:: cout << "the final vale is = " << result << std::endl; 
+   std:: cout << "the final value is = " << result << std::endl; 
  }  
 
