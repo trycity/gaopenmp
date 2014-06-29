@@ -21,7 +21,7 @@
 %  Add 'draft' option to mark overfull boxes with black boxes
 %  Add 'showpacs' option to make PACS codes appear
 %  Add 'showkeys' option to make keywords appear
-\documentclass[aps,prl,preprint,groupedaddress,showkeys,nobibnotes]{revtex4-1}
+\documentclass[aps,prl,preprint,groupedaddress,showkeys]{revtex4-1}
 %\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-1}
 %\documentclass[aps,prl,reprint,groupedaddress]{revtex4-1}
 
@@ -29,7 +29,7 @@
 % Choosing a journal automatically selects the correct APS
 % BibTeX style file (bst file), so only uncomment the line
 % below if necessary.
-%\bibliographystyle{apsrev4-1}
+\bibliographystyle{apsrev4-1}
 
 \begin{document}
 
@@ -77,7 +77,7 @@
 \date{\today}
 
 \begin{abstract}
-We present a detailed description of a multi-dimensional genetic algorithm implemented in C++11 and the OpenMP library.  The use of the OpenMP library allows for the algorithm to be implemented using parallel processing and hence operate in an extremely efficient manner.  The algorithm also offers a considerable degree of flexibility in allowing the user to experiment with different cross-over operators.  Results are presented for several multi-dimensional functions and in comparison to more common genetic algorithms available.  
+We present a detailed description of a multi-dimensional genetic algorithm implemented in C++11 and the OpenMP library.  The use of the OpenMP library allows for the algorithm to be implemented using parallel processing and hence operate in an extremely efficient manner.  The algorithm also offers a considerable degree of flexibility in allowing the user to experiment with different cross-over operators.  Results are presented for several multi-dimensional functions and in comparison to more common genetic algorithms available. \cite{Bire82}  
 \end{abstract}
 
 % insert suggested PACS numbers in braces on next line
@@ -190,8 +190,8 @@ The Chromosome Builder is responsible for creating a family of chromosomes from 
 %\end{acknowledgments}
 
 % Create the reference section using BibTeX:
-\bibliography{basename of .bib file}
-
+%\bibliography{basename of .bib file}
+\bibliography{GAOpenMPNotes.bib}
 \end{document}
 %
 % ****** End of file apstemplate.tex ******
