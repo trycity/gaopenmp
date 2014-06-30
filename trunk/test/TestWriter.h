@@ -53,6 +53,7 @@ template <class T>
 void TestWriter<T>::runTests()
 {
 	mTestClass.runTests();
+   logTests()
 }
 
 
