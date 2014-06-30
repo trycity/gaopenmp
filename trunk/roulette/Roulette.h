@@ -12,6 +12,7 @@
 #include<iostream>
 #include <vector>
 #include <random>
+#include <algorithm>
 
 template <class T>
 class Roulette
@@ -50,7 +51,7 @@ class Roulette
       *fitness object of Fitness_value class to call compute value method for calculation individual values
       */
       POPULATION& fpop = mPop.getPopulation();
-      std::vector<double> FitnessVector;
+      std::vector<double> FitnessVector(fpop.size(), 0.0);
       std::vector<double> probalityVector;
       double totalFitness =0.0;
       double cummulativeProb = 0.0;
@@ -58,10 +59,11 @@ class Roulette
       Fittness_value<T> fitness(mlength, mNDIM, mdomain, mfunction);
 
 		
-      
+      #pragma omp for ordered schedule(dynamic)
       for(int i=0; i < fpop.size(); i++)   
        {
-         FitnessVector.push_back(fitness.computeValue(fpop[i]));
+			#pragma omp ordered
+         FitnessVector[i]=fitness.computeValue(fpop[i]);
          totalFitness += FitnessVector[i];
 			
        }  
@@ -80,16 +82,10 @@ class Roulette
        }
 
 		/*
-      * totallength calculate the total length by summing the length in each direction.
+      * 
       * randomvector setting the vector of random real numbers
 		* Create the new population
       */
-      unsigned int totallength = 0;
-      for( unsigned int i =0; i <mNDIM; i++)
-       {
-          totallength += mlength[i];
-       }
-   
          std::default_random_engine generator;
          std::uniform_real_distribution<double> distribution(0.0,1.0);
          std::vector<double> randomvector(fpop.size(), 0.0);
@@ -104,11 +100,9 @@ class Roulette
          while(randomvector[i] > cum_prob_vector[count]) {count++;};
           if(count!=i)
           {
-          for(unsigned int j=0; j< totallength; j++) 
-           {   
-             fpop[i][j]= fpop[count][j];
-             
-           }
+          	std::copy(fpop[count].begin(), fpop[count].end(),
+              fpop[i].begin() );
+          
           }
         
         }
