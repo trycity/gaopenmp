@@ -39,13 +39,12 @@ void Population_test::testInitialization()
 		
       
 		POPULATION& popRef = chrom_initial.getPopulation();
-		unsigned int chromSize = popRef[0].size();
+		unsigned int chromSize = popRef.size();
 		printFarm(popRef);
       if(chromSize != sizeofpopulation)
       {
          throw int(chromSize);
       }
-		
    }
    catch(int x)
    {
