@@ -15,7 +15,7 @@ Chromosome_Length::Chromosome_Length(unsigned int aPrecision,
 {
    if(theNDIM != domain.size()/2)
    {
-      //Throw exception
+      throw;
    }
 }
 
