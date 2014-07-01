@@ -31,17 +31,18 @@ Chromosome Chromosome_Length::getChromosome()
 void Chromosome_Length::buildChromosome()
 {
    unsigned int chromosomeLength = 0;
-   #pragma omp parallel 
-   {
-      #pragma omp for
-      for(unsigned int i=0; i<theNDIM; ++i)
-      {
-         
-         unsigned int length = computeLength(domain[2*i], domain[2*i+1]);
-         theLengths.push_back(length);
-         chromosomeLength += length;
-      }
-   }
+   theLengths.resize(theNDIM, 0);
+   
+   #pragma omp for ordered schedule(dynamic)
+   for(unsigned int i=0; i<theNDIM; ++i)
+   {      
+		unsigned int length = computeLength(domain[2*i], domain[2*i+1]);
+		
+		#pragma omp ordered
+		theLengths[i] = length;
+		
+      chromosomeLength += length;
+	}
 
    theChromosome.resize(chromosomeLength);
 }
