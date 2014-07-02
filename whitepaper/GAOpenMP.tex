@@ -24,7 +24,7 @@
 \documentclass[aps,prl,preprint,groupedaddress,showkeys, nobibnotes]{revtex4-1}
 %\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-1}
 %\documentclass[aps,prl,reprint,groupedaddress]{revtex4-1}
-
+\usepackage{mathtools}
 % You should use BibTeX and apsrev.bst for references
 % Choosing a journal automatically selects the correct APS
 % BibTeX style file (bst file), so only uncomment the line
@@ -92,20 +92,29 @@ We present a detailed description of a multi-dimensional genetic algorithm imple
 
 % body of paper here - Use proper section commands
 % References should be done using the \cite, \ref, and \label commands
-\section{Introduction}
+\section{\label{Intro}Introduction}
 % Put \label in argument of \section for cross-referencing
 %\section{\label{}}
-This is the introduction.
+
 \subsection{}
 \subsubsection{}
 
 \section{Genetic Algorithm Components}
 \subsection{Chromosome Builder}
-The Chromosome Builder is responsible for creating a family of chromosomes from the domain space chosen by the user.  Each chromosome is represented as an array of \textit{boolean} values.  Although C++ provides a bitset data structure, as part of its Standard Template Library (STL), it does not have the flexibility of determining the length of a bitset at runtime.  Therefore an array was chosen which could be dynamically altered to map to the user supplied domain space.  The length of the chromosome is bound by the domain space, for a given dimension of range [a:b] we have 
+The Chromosome Builder is responsible for creating a family of chromosomes from the domain space chosen by the user.  Each chromosome is represented as a dynamic array of \textit{boolean} values.  Although C++ provides a bitset data structure, as part of its Standard Template Library (STL), it does not have the flexibility of determining the length of a bitset at runtime.  Therefore, an array was chosen which could be dynamically altered (std::vector) to map to the user supplied domain space.  The length of the chromosome is bound by the domain space, for a given dimension of range [a:b] and a precision, P we have 
 
 \begin{equation}
-2^{N_{1}-1}<(b-a)\cdot1000\leq2^{N_{1}}
+2^{N_{i}-1}<(b-a)\cdot10^{P}\leq2^{N_{i}}
 \end{equation}
+
+where $N_{i}$ is the apportioned length of the chromosome for a given dimension.  The total length of the chromosomes is then,
+
+\begin{equation}
+N_{length } = \sum\limits_{i=1}^{N_{dim}} N_{i}
+\end{equation}
+
+The OpenMP library allows for each dimension to be computed independently of the others, with a master thread combining all the lengths into a total length.  The total number of chromosomes can be set by the user with a default value of $75$, the initial values of each chromosome are randomly chosen.
+
 \subsection{Roulette}
 \subsection{Crossover}
 \subsection{Mutate}
