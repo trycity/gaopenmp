@@ -39,8 +39,8 @@ void crossing::crossover()
 
   unsigned int position = static_cast<unsigned int>(distribution(generator)*fpop[0].size());
 
-	std::cout<<"fpop size = "<<fpop.size()<<std::endl;
-	std::cout<<" position = "<<position<<std::endl;
+	//std::cout<<"fpop size = "<<fpop.size()<<std::endl;
+	//std::cout<<" position = "<<position<<std::endl;
   #pragma omp parallel for 
   for(unsigned int i = 0; i < chosen.size(); i = i+2)
    {
