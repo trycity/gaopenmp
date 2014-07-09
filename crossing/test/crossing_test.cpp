@@ -46,7 +46,7 @@ void crossing_test::testcrossing()
 
    POPULATION fpop;
 
-	for(int i=0; i<1000; ++i)
+	for(int i=0; i<10000; ++i)
 	{
 		fpop.push_back(trueChromosome);
 		fpop.push_back(trueChromosome);
@@ -57,7 +57,7 @@ void crossing_test::testcrossing()
 
 	high_resolution_clock::time_point t1 = high_resolution_clock::now();
    crossing onepoint(fpop);
-   for(int i=0; i<100; ++i)
+   for(int i=0; i<1000; ++i)
    {
       onepoint.crossover();
    }
