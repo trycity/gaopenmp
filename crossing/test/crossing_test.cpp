@@ -5,9 +5,12 @@
 #include "crossing.h"
 #include "Population.h"
 #include "crossing_test.h"
-#include <time.h> 
+#include <ctime> 
 #include <stdio.h>
+#include <ratio>
+#include <chrono>
 
+using namespace std::chrono;
 
 crossing_test::crossing_test()
 {
@@ -43,7 +46,7 @@ void crossing_test::testcrossing()
 
    POPULATION fpop;
 
-	for(int i=0; i<5; ++i)
+	for(int i=0; i<100000; ++i)
 	{
 		fpop.push_back(trueChromosome);
 		fpop.push_back(trueChromosome);
@@ -52,14 +55,14 @@ void crossing_test::testcrossing()
     
 	  //printFarm(fpop);
 
-	clock_t start = clock();    
+	high_resolution_clock::time_point t1 = high_resolution_clock::now();
    crossing onepoint(fpop);
    onepoint.crossover();
-	clock_t end = clock();
-   std::cout<<"Final population"<<std::endl;
+	high_resolution_clock::time_point t2 = high_resolution_clock::now();
 	//printFarm(fpop);
-	double time = difftime(end, start) * 1000.0;
-	std::cout<<"Number of seconds = "<<time<<std::endl;
+	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+
+  std::cout << "It took me " << time_span.count() << " seconds."<<std::endl;
     
 }
 
