@@ -41,14 +41,14 @@ void crossing::crossover()
 
 	std::cout<<"fpop size = "<<fpop.size()<<std::endl;
 	std::cout<<" position = "<<position<<std::endl;
-  //#pragma omp parallel for 
+  #pragma omp parallel for 
   for(unsigned int i = 0; i < chosen.size(); i = i+2)
    {
     std::copy(fpop[chosen[i]].begin(), fpop[chosen[i]].end(),
               temp1.begin() );
     std::copy(fpop[chosen[i+1]].begin(), fpop[chosen[i+1]].end(),
               temp2.begin() );
-      //#pragma omp parallel for
+     //#pragma omp parallel for
      for(unsigned int k = position; k<fpop[0].size(); k++)
       {
        temp1[k] = fpop[chosen[i+1]][k];
@@ -62,7 +62,6 @@ void crossing::crossover()
        }
         
     }
-	std::cout<<"End of method..."<<std::endl;
   
 }
 

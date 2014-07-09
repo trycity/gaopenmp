@@ -52,7 +52,7 @@ class Fittness_value
       std::vector<double> values(mNDIM, 0.0);
   
 		
-      for(int i=0; i<mNDIM; i++)
+      for(unsigned int i=0; i<mNDIM; i++)
       {
          std::vector<bool>::const_iterator secondIt = std::next(beginIt, mlength[i]);  
       

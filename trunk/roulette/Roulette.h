@@ -60,7 +60,7 @@ class Roulette
 
 		
       #pragma omp for ordered schedule(dynamic)
-      for(int i=0; i < fpop.size(); i++)   
+      for(unsigned int i=0; i < fpop.size(); i++)   
        {
 			#pragma omp ordered
          FitnessVector[i]=fitness.computeValue(fpop[i]);
@@ -74,7 +74,7 @@ class Roulette
       *Calculate cummaltive probaly vector
       *
       */
-      for(int i=0; i < fpop.size(); i++)   
+      for(unsigned int i=0; i < fpop.size(); i++)   
        {   
          probalityVector.push_back( FitnessVector[i]/totalFitness);
          cummulativeProb +=probalityVector[i];
@@ -91,11 +91,11 @@ class Roulette
          std::vector<double> randomvector(fpop.size(), 0.0);
        
 
-        for(int i=0; i <fpop.size(); i++ )   
+        for(unsigned int i=0; i <fpop.size(); i++ )   
         {   
          
          randomvector[i] = distribution(generator);
-         int count=0;
+         unsigned int count=0;
       	
          while(randomvector[i] > cum_prob_vector[count]) {count++;};
           if(count!=i)
