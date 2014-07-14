@@ -1,6 +1,7 @@
 #include <iostream>
 #include "crossing_test.h"
-#include "crossingtwo_test.h"
+#include "TwoPointCrossing_test.h"
+#include "crossing_wraptest.h"
 
 
 
@@ -13,8 +14,11 @@ int main()
    crossing_test aTestObject;
 	aTestObject.runTests();
    
-    crossingtwo_test anobject;
+    TwoPointCrossing_test anobject;
      anobject.runTests();
+  
+   // crossing_wraptest aninstance;
+   // aninstance.runTests();
     
 
   
