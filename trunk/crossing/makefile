@@ -3,7 +3,7 @@
 include ../makefile.common
 
 CXXFLAGS += -I../utilities
-CXXFLAGS += -I../initialization
+#CXXFLAGS += -I../initialization
 
 DIRECTORY = crossing
 

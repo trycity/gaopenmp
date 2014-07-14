@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "crossing.h"
-#include "Population.h"
+
 #include "crossing_test.h"
 #include <ctime> 
 #include <stdio.h>
@@ -46,14 +46,14 @@ void crossing_test::testcrossing()
 
    POPULATION fpop;
 
-	for(int i=0; i<10000; ++i)
+	for(int i=0; i<1000; ++i)
 	{
 		fpop.push_back(trueChromosome);
 		fpop.push_back(trueChromosome);
 		fpop.push_back(achromosome);
 	}
-    
-	  //printFarm(fpop);
+    std::cout<< "initial crossing population"<< std::endl;
+	  printFarm(fpop);
 
 	high_resolution_clock::time_point t1 = high_resolution_clock::now();
    crossing onepoint(fpop);
@@ -62,7 +62,9 @@ void crossing_test::testcrossing()
       onepoint.crossover();
    }
 	high_resolution_clock::time_point t2 = high_resolution_clock::now();
-	//printFarm(fpop);
+	std::cout<< "final crossing population"<< std::endl;
+
+   printFarm(fpop);
 	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 
   std::cout << "It took me " << time_span.count() << " seconds."<<std::endl;
@@ -84,3 +86,20 @@ for(unsigned int i =0; i<anObject.size(); i++)
 		std::cout<<std::endl;
 	}	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
