@@ -16,7 +16,7 @@ crossing_wrap::~crossing_wrap()
 
 void crossing_wrap::crossingone()
 {
-  std::cout <<"before crossing1"<< std::endl;
+  
   crossing anobject(mpop);
   anobject.crossover();
 
@@ -25,10 +25,10 @@ void crossing_wrap::crossingone()
 
 void crossing_wrap::crossingtwo()
 {
- std::cout <<"before crossing2"<< std::endl;
+ 
  TwoPointCrossing twopoint(mpop);
  twopoint.crossovertwo(); 
- std::cout <<"after crossing2"<< std::endl;
+ 
 }
 
 
