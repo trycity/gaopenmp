@@ -4,10 +4,14 @@ COMMON_DIRS = utilities
 COMMON_DIRS += initialization
 COMMON_DIRS += roulette
 COMMON_DIRS += crossing
+COMMON_DIRS += mutation
+COMMON_DIRS += system
 
 SOURCE_DIRS = initialization
 SOURCE_DIRS += roulette
 SOURCE_DIRS += crossing
+SOURCE_DIRS += mutation
+SOURCE_DIRS += system
 
 ARTIFACT_DIRS = logs
 ARTIFACT_DIRS += docs

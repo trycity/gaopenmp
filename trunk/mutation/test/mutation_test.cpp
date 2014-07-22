@@ -1,31 +1,25 @@
-#include "GA_Typedefs.h"
+#include "mutation.h"
+#include "mutation_test.h"
 #include <iostream>
 #include <vector>
-#include "TwoPointCrossing.h"
-
-#include "TwoPointCrossing_test.h"
-#include <ctime> 
-#include <stdio.h>
-#include <ratio>
-#include <chrono>
-using namespace std::chrono;
 
 
-TwoPointCrossing_test::TwoPointCrossing_test()
+
+mutation_test::mutation_test()
 {
 }
 
-TwoPointCrossing_test::~TwoPointCrossing_test()
+mutation_test::~mutation_test()
 {
 }
-void TwoPointCrossing_test::runTests()
+void mutation_test::runTests()
 {
 	std::cout<<"Running testcrossingtwo"<<std::endl;
-	testcrossingtwo();
+	testmutation();
 	std::cout<<"Success"<<std::endl<<std::endl;	
 }
  
-void TwoPointCrossing_test::testcrossingtwo()
+void mutation_test::testmutation()
 
 {
  Chromosome achromosome;
@@ -49,34 +43,22 @@ void TwoPointCrossing_test::testcrossingtwo()
 	fpop.push_back(achromosome);
 	fpop.push_back(achromosome);*/
 
-	for(int i=0; i<100; ++i)
+	for(int i=0; i<5; ++i)
 	{
 		fpop.push_back(trueChromosome);
 		fpop.push_back(trueChromosome);
 		fpop.push_back(achromosome);
 	}
-
-	printFarm(fpop); 
-   high_resolution_clock::time_point t1 = high_resolution_clock::now();
-   
-    TwoPointCrossing  onepoint(fpop);
-   
-  for(int i=0; i<10; ++i)
-   {
-
-    onepoint.crossovertwo();
-   }
-
-   high_resolution_clock::time_point t2 = high_resolution_clock::now();
-   std::cout<<"Final population"<<std::endl;
-	printFarm(fpop);
-   duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-
-  std::cout << "It took me " << time_span.count() << " seconds."<<std::endl;
+    printFarm(fpop);
+    
+     mutation flip(fpop);
      
+      flip.flipbit();
+   
+   printFarm(fpop);
 }
 
-void TwoPointCrossing_test::printFarm(POPULATION& anObject)
+void mutation_test::printFarm(POPULATION& anObject)
 {
 
 	unsigned int chromSize = anObject[0].size();
