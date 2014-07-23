@@ -5,7 +5,7 @@
 // include files
 #include "Chromosome_Length.h"
 #include "Population.h"
-#include "roulette.h"
+#include "Roulette.h"
 #include "crossing_wrap.h"
 #include "mutation.h"
 #include "GA_Typedefs.h"
@@ -16,14 +16,14 @@ class GA_OpenMP
 {
 public:
    GA_OpenMP(const std::vector<double>& adomain, unsigned int crossingvalue,
-                              T& aFunction):domain(adomain), value(crossingvalue), mfunction(aFunction), size(32), precision(6){}
+                              T& aFunction):domain(adomain), value(crossingvalue), mfunction(aFunction), size(75), precision(6){}
    ~GA_OpenMP(){}
 
 
    void run()
    {
       unsigned int NDIM = domain.size()/2;
-      unsigned int iter =10000000;
+      unsigned int iter =10000;
       
       Chromosome_Length aLength(precision,NDIM,domain);
       aLength.buildChromosome();
@@ -44,7 +44,7 @@ public:
       
            mutation mutate(fpop);
            
-      for(int i=0; i<iter; i++ )
+      for(unsigned int i=0; i<iter; i++ )
       {    
       
          wheel.spinWheel();

@@ -23,9 +23,9 @@ void GA_OpenMP_test::testgaopenmp()
 { 
    std::vector<double> domain;
     domain.push_back(0.0);
-    domain.push_back(3.1415927);
+    domain.push_back(3.141592653589793);
   
-    unsigned int value = 0;
+    unsigned int value = 1;
 
     Function mfunction;
     GA_OpenMP<Function> first(domain, value, mfunction);
