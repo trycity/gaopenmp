@@ -95,6 +95,18 @@ We present a detailed description of a multi-dimensional genetic algorithm imple
 \section{\label{Intro}Introduction}
 % Put \label in argument of \section for cross-referencing
 %\section{\label{}}
+Genetic algorithm(GA) is a type of search algorithm, which is designed to find the optimal solution of the given problem in complex search space.  It uses the principal of natural selection and evolution to produce several solutions of the problem.  Genetic Algorithm works by removing the weak solution from the search space.  It evaluates the fitness of the individual solution by calculating its fitness value depending upon the function provided by the user.  The individuals having higher fitness value are then selected, cross-bred and  mutated in order to give the best possible solution.  This cycle continues until the user gets the satisfied results.
+
+Multi-dimensional parallel genetic algorithm with OpenMP has two distinguishing features which are as follows:
+\begin{itemize}
+  \item multi-dimensional genetic algorithm gives flexibility to the user to find solution of the function containing multiple dimensions.
+  \item parallel genetic algorithm uses OpenMP which makes it more faster by reducing the time it takes to run.
+\end{itemize}
+
+In the past most of the genetic algorithm dealt with very restricted number of dimensions.  However, this genetic algorithm will be able to perform in multi-dimensional search space to give the best possible solution of complicated problems.  Additionally,the use of OpenMp instead of MPI(Message Passing Interface) has also proved to be a better option for parallel computing purpose.  It is considered easier to program and debug as compared to MPI.  OpenMP allows directives to be added incrementally, so the program can be parallelized one portion after another and thus no dramatic change to code is needed.  Whereas, more changes are required in converting from serial to parallel programming in MPI.  OpenMP is also considered best for loop parallelization, which has an extensive use in this genetic algorithm.
+
+
+
 
 \subsection{}
 \subsubsection{}

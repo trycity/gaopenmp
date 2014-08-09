@@ -23,7 +23,7 @@ public:
    void run()
    {
       unsigned int NDIM = domain.size()/2;
-      unsigned int iter =10000;
+      unsigned int iter =100000;
       
       Chromosome_Length aLength(precision,NDIM,domain);
       aLength.buildChromosome();
