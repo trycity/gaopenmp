@@ -28,6 +28,11 @@ Chromosome Chromosome_Length::getChromosome()
    return theChromosome;
 }
 
+std::vector<unsigned int> Chromosome_Length::getLength()
+{
+   return theLengths;
+}
+
 void Chromosome_Length::buildChromosome()
 {
    unsigned int chromosomeLength = 0;
