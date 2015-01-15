@@ -26,10 +26,7 @@ public:
    Chromosome getChromosome();
 
    /// accessor
-   std::vector<unsigned int> getLength()
-   {
-      return theLengths;
-   }
+   std::vector<unsigned int> getLength();
   
    /// build chromosome
    void buildChromosome();
