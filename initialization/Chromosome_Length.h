@@ -7,7 +7,6 @@
 #define CHROMOSOME_LENGTH_H
 
 #include <vector>
-#include <iterator> 
 
 #include "GA_Typedefs.h"
 
@@ -25,7 +24,7 @@ public:
    /// chromosome accessor
    Chromosome getChromosome();
 
-   /// accessor
+   /// accessor for length array
    std::vector<unsigned int> getLength();
   
    /// build chromosome
@@ -33,17 +32,30 @@ public:
    
 private:
 
+   /**
+    * Compute the length of the chromosome in a particular dimension
+    *
+    * @param aLowerLimit  The lower limit of a particular dimension
+    * @param anUpperLimit The upper limit of a particular dimension
+    *
+    * @return the length of the chromosome in a particular dimension
+    */   
    unsigned int computeLength(double aLowerLimit, 
                               double anUpperLimit);
 
+   /// the required precision
    unsigned int thePrecision;
 
+   /// The number of dimensions
    unsigned int theNDIM;
 
+   /// The domain of the problem
    const std::vector<double>& domain;
 
+   /// The chromosome
    Chromosome theChromosome; 
 
+   /// An array of lengths - each element represents the size of the chromosome in each dimension
    std::vector<unsigned int> theLengths;
 
 #ifdef UNIT_TEST
@@ -53,3 +65,4 @@ private:
 };
 
 #endif // CHROMOSOME_LENGTH_H
+
