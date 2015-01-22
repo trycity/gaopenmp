@@ -1,7 +1,7 @@
-// class for Chromosome_Length
 /**
- @file Chromosome_Length.cpp
-*/
+ * @file Chromosome_Length.cpp
+ * @author zshahid
+ */
 
 #include <cmath>
 #include <omp.h>
@@ -11,7 +11,8 @@
 
 Chromosome_Length::Chromosome_Length(unsigned int aPrecision, 
                                      unsigned int aNDIM, 
-                                     const std::vector<double>& adomain):thePrecision(aPrecision), theNDIM(aNDIM), domain(adomain)
+                                     const std::vector<double>& adomain):thePrecision(aPrecision), 
+                                     theNDIM(aNDIM), domain(adomain)
 {
    if(theNDIM != domain.size()/2)
    {
@@ -63,9 +64,5 @@ unsigned int Chromosome_Length::computeLength(double aLowerLimit,
    
    return length;
 }
-
-
- 
-
 
 
