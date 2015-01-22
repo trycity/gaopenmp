@@ -1,0 +1,30 @@
+Making makefile for all dierctories
+
+we need to have make file in each of the directories before start buiding up make file...in this case we are only dealing with two directories utilities and initilization each of them has their own makefile.The initialization make file includes the makefile common(including all kind of flags) and -c for compiling .cpp files and -I falg to include utilities file(or nay file you want to add)
+then it has target name like all and clean.
+
+then we need to create  top most makefile in ourr case it is in gaopenmp. it includes
+
+COMMON_DIRS = utilities
+COMMON_DIRS += initialization
+
+
+COMMON_DIRS.....  is in actually array..... it has utilities and intilaization as it matrice or vector memeber.Here += is justa adding intilaization as the seconf elemnt of the vector
+
+.PHONY: all docs test
+phony targets just make sure that makefile while running deos not worry anout the time stamp of any file in consideration.
+all:
+	for dir in $(COMMON_DIRS); do \
+	 (echo $$dir; cd $$dir; make)||exit;\
+	done
+it a for loop for just giving a command to each makefile within the directories...so that it runs it by just writing make in the top most file.we also write similar for loop for clean target...the only differnce is that instead of writing make we wrote make clean.
+
+
+//FOR TESTING THE FILES IN DIRECTORIES
+in order to run test for the files included in these directories...we need to add test for loop in the topmost makefile...we just added the for loop for writing the make test command on the main terminal
+
+however in the initilization directory we made test dependant upon all
+(CXX) $(CXXFLAGS) -c -I../$(DIRECTORY) test/*.cpp
+
+this line actually compile the files inand -I../$(DIRECTORY) is a path to the directory for finding the files  which are actually not the part of the test directory...In our case the the test directory has the test file where as the .h file is in the initialization which is directed over there thought the above mentioned file...
+
