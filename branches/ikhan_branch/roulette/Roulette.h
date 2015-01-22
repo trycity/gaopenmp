@@ -40,15 +40,13 @@ public:
    }
 
    /**
-    *
     * New Farm is set up using a roulette wheel parent selection
     *
     */
-
    void spinWheel()
    {
       /*
-       *fpop is refrerence of vector o another vector of bool
+       *fpop is refrerence of vector to a vector of bools
        *FitnessVector contain fitness of each individual chromosomes of the farm
        *fitness object of Fitness_value class to call compute value method for calculation individual values
        */
@@ -60,7 +58,7 @@ public:
       std::vector<double> cum_prob_vector;
       Fittness_value<T> fitness(mlength, mNDIM, mdomain, mfunction);
 
-#pragma omp for ordered schedule(dynamic)
+      #pragma omp for ordered schedule(dynamic)
       for(unsigned int i = 0; i < fpop.size(); i++)
       {
          #pragma omp ordered
@@ -70,7 +68,6 @@ public:
       }
 
       /*
-       *
        *Calculate the probality vector
        *Calculate cummaltive probaly vector
        *
@@ -83,7 +80,6 @@ public:
       }
 
       /*
-       *
        * randomvector setting the vector of random real numbers
        * Create the new population
        */
@@ -112,7 +108,7 @@ public:
 
 private:
 
-   /// The population class object represention farm of chromosomes
+   /// The population class object representation farm of chromosomes
    Population& mPop;
 
    /// The length of each dimension in the chromosome

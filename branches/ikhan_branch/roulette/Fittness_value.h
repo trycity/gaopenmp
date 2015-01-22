@@ -8,7 +8,6 @@
 
 #include <vector>
 #include <cmath>
-#include <iostream>
 
 #include "GA_Typedefs.h"
 
@@ -104,20 +103,18 @@ private:
    }
 
    /// The length of each dimension in the chromosome
-   const std::vector<unsigned int> & mlength;
+   const std::vector<unsigned int>& mlength;
 
    /// The number of dimensions
    unsigned int mNDIM;
 
    /// The domain of the problem
-   const std::vector<double> & mdomain;
+   const std::vector<double>& mdomain;
 
    /// The function over which the Genetic Algorithm will perform its search
    T& mfunction;
 
 #ifdef UNIT_TEST
    friend class Fitness_test;
-#endif //UNIT_TEST
-};
-
-#endif // FITTNESS_VALUE_H
+#endif //UNIT_TEST};
+#endif // FITTNESS_VALUE_H
