@@ -12,11 +12,10 @@
 
 #include "GA_Typedefs.h"
 
-
-template <class T>
+template<class T>
 class Fittness_value
 {
-   public:
+public:
    /**
     * Fitness Value ctor
     *
@@ -25,15 +24,16 @@ class Fittness_value
     * @param adomain The domain covering the dimensions of the function
     * @param afunction The template function in question
     */
-   Fittness_value(const std::vector<unsigned int>& alength, 
-                  unsigned int aNDIM, 
-                  const std::vector<double>& adomain, 
-                  T& afunction): mlength(alength),
-                  mNDIM(aNDIM), mdomain(adomain), mfunction(afunction) {}
-                                                                                                                                                    
+   Fittness_value(const std::vector<unsigned int>& alength, unsigned int aNDIM,
+         const std::vector<double>& adomain, T& afunction) :
+         mlength(alength), mNDIM(aNDIM), mdomain(adomain), mfunction(afunction)
+   {
+   }
 
    /// dtor        
-   ~Fittness_value(){}
+   ~Fittness_value()
+   {
+   }
 
    /**
     * Computes the value of a particular chromosome in the function
@@ -42,40 +42,36 @@ class Fittness_value
     *
     * @return The value of the chromosome in the function
     */
-	double computeValue(Chromosome& achromosome)
+   double computeValue(Chromosome& achromosome)
    {
-		
+
       // create iterators
       // set iterators to initial dimension in chromosome
-      Chromosome::const_iterator beginIt = achromosome.begin();  
- 
-      std::vector<double> values(mNDIM, 0.0);
-  
-		
-      for(unsigned int i=0; i<mNDIM; i++)
-      {
-         std::vector<bool>::const_iterator secondIt = std::next(beginIt, mlength[i]);  
-      
-         double lowerLimit = mdomain[2*i];
-         double upperLimit = mdomain[2*i+1];
+      Chromosome::const_iterator beginIt = achromosome.begin();
 
-			
-         values[i] = computeCoordinateValue(beginIt, secondIt, lowerLimit, upperLimit);
-      	
+      std::vector<double> values(mNDIM, 0.0);
+
+      for(unsigned int i = 0; i < mNDIM; i++)
+      {
+         std::vector<bool>::const_iterator secondIt = std::next(beginIt,
+               mlength[i]);
+
+         double lowerLimit = mdomain[2 * i];
+         double upperLimit = mdomain[2 * i + 1];
+
+         values[i] = computeCoordinateValue(beginIt, secondIt, lowerLimit,
+               upperLimit);
+
          beginIt = secondIt++;
       }
-   
-		
-   	double result = mfunction(values);
-		
+
+      double result = mfunction(values);
+
       return result;
    }
-   
- 
-    
 
-   private:
-   
+private:
+
    /**
     * Computes the value of a particular coordinate in function space
     *
@@ -86,45 +82,42 @@ class Fittness_value
     *
     * @return The value of the coordinate of a chromosome
     */
-   double computeCoordinateValue(Chromosome::const_iterator beginIt, Chromosome::const_iterator secondIt,
-                                 double lowerLimit, double UpperLimit)
+   double computeCoordinateValue(Chromosome::const_iterator beginIt,
+         Chromosome::const_iterator secondIt, double lowerLimit,
+         double UpperLimit)
    {
-      double m =0;    
-      int length =  distance(beginIt,secondIt);
-   
-      unsigned int i=0;  
- 
-      for ( ; beginIt != secondIt; ++beginIt)
+      double m = 0;
+      int length = distance(beginIt, secondIt);
+
+      unsigned int i = 0;
+
+      for(; beginIt != secondIt; ++beginIt)
       {
-         m += (*beginIt)*std::pow(2.0,i);
+         m += (*beginIt) * std::pow(2.0, i);
          i++;
-      }  
-   
-      double n = lowerLimit+m*(UpperLimit-lowerLimit)/(std::pow(2.0, length)-1.0);
+      }
+
+      double n = lowerLimit
+            + m * (UpperLimit - lowerLimit) / (std::pow(2.0, length) - 1.0);
 
       return n;
    }
-   
+
    /// The length of each dimension in the chromosome
-	const std::vector<unsigned int> & mlength;
+   const std::vector<unsigned int> & mlength;
 
    /// The number of dimensions
-	unsigned int mNDIM;
+   unsigned int mNDIM;
 
    /// The domain of the problem
-	const std::vector<double> & mdomain;
+   const std::vector<double> & mdomain;
 
    /// The function over which the Genetic Algorithm will perform its search
-	T& mfunction;
-
-
+   T& mfunction;
 
 #ifdef UNIT_TEST
    friend class Fitness_test;
 #endif //UNIT_TEST
-
 };
 
-
 #endif // FITTNESS_VALUE_H
-
