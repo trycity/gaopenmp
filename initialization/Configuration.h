@@ -3,13 +3,10 @@
  * @author trycity
  */
 
-
 #ifndef CONFIGURATION_HEADER
 #define CONFIGURATION_HEADER
 
-
 #include "GA_Typedefs.h"
-
 
 class Configuration
 {
@@ -21,8 +18,7 @@ public:
     * @param aSizeOfPopulation the size of the population
     * @param aChromosome A chromosome of some particular size
     */
-	Configuration(unsigned int aSizeOfPopulation,
-                  Chromosome& aChromosome);
+   Configuration(unsigned int aSizeOfPopulation, Chromosome& aChromosome);
 
    /**
     * Destructor
@@ -38,7 +34,7 @@ public:
    /**
     * Create initial values for chromosomes
     */
-   void  Initialization();
+   void Initialization();
 
 private:
    /// Population size
@@ -52,7 +48,6 @@ private:
 #endif //UNIT_TEST
 
 };
-
 
 #endif // CONFIGURATION_HEADER
 
