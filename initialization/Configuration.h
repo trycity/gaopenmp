@@ -22,7 +22,7 @@ public:
     * @param aChromosome A chromosome of some particular size
     */
 	Configuration(unsigned int aSizeOfPopulation,
-                       Chromosome aChromosome);
+                  Chromosome& aChromosome);
 
    /**
     * Destructor

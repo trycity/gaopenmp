@@ -9,7 +9,7 @@
 #include <vector>
 #include <random>
 
-Configuration::Configuration(unsigned int  aSizeOfPopulation, Chromosome aChromosome):
+Configuration::Configuration(unsigned int aSizeOfPopulation, Chromosome& aChromosome):
 							mSizeOfPopulation(aSizeOfPopulation)
 {
    mPopulation.reserve(mSizeOfPopulation);
