@@ -1,5 +1,5 @@
 /**
- * @file Configuration.h
+ * @file Configuration.cpp
  * @author trycity
  */
 
