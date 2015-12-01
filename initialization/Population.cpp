@@ -1,9 +1,12 @@
-
+/**
+ *
+ */
 
 #include "Population.h"
+
 #include <omp.h>
 #include <vector>
-#include<iostream>
+#include <iostream>
 #include <random>
 
 Population::Population(unsigned int  aSizeOfPopulation, Chromosome aChromosome):mSizeOfPopulation(aSizeOfPopulation)
@@ -26,9 +29,11 @@ Population::~Population()
 	#pragma omp parallel for collapse(2)
    for(unsigned int i =0; i< mSizeOfPopulation; i++)
    {
+
 		for(unsigned int j=0; j<Chrom_size; j++)
 		{
       	mPopulation[i][j]=static_cast<bool>(distribution(generator));
+      	//std::cout<<"Number of threads = "<<omp_get_num_threads()<<std::endl;
 		}
 	}	
 }
