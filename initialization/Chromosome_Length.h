@@ -50,7 +50,7 @@ private:
    unsigned int theNDIM;
 
    /// The domain of the problem
-   const std::vector<double>& domain;
+   const std::vector<double>& thedomain;
 
    /// The chromosome
    Chromosome theChromosome; 

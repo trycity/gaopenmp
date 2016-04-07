@@ -11,7 +11,7 @@
 
 Chromosome_Length::Chromosome_Length(unsigned int aPrecision,
       unsigned int aNDIM, const std::vector<double>& adomain) :
-      thePrecision(aPrecision), theNDIM(aNDIM), domain(adomain)
+      thePrecision(aPrecision), theNDIM(aNDIM), thedomain(adomain)
 {
    if(theNDIM != domain.size() / 2)
    {
@@ -35,14 +35,14 @@ std::vector<unsigned int> Chromosome_Length::getLength()
 
 void Chromosome_Length::buildChromosome()
 {
-   unsigned int chromosomeLength = 0;
+   unsigned int chromosomeLength {0};
    theLengths.resize(theNDIM, 0);
 
    #pragma omp for ordered schedule(dynamic)
    for(unsigned int i = 0; i < theNDIM; ++i)
    {
       unsigned int length = computeLength(domain[2 * i], domain[2 * i + 1]);
-      std::cout << "Number of threads = " << omp_get_num_threads() << std::endl;
+
       #pragma omp ordered
       theLengths[i] = length;
 
@@ -55,7 +55,7 @@ void Chromosome_Length::buildChromosome()
 unsigned int Chromosome_Length::computeLength(double aLowerLimit,
       double anUpperLimit)
 {
-   unsigned int length = 0;
+   unsigned int length {0};
 
    double total = (anUpperLimit - aLowerLimit) * std::pow(10, thePrecision);
 
