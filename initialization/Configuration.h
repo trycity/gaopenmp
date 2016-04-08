@@ -18,7 +18,7 @@ public:
     * @param aSizeOfPopulation the size of the population
     * @param aChromosome A chromosome of some particular size
     */
-   Configuration(unsigned int aSizeOfPopulation, Chromosome& aChromosome);
+   Configuration(unsigned int aSizeOfPopulation, Chromosome& aChromosome) noexcept;
 
    /**
     * Destructor

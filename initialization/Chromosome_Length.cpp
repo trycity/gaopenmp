@@ -13,7 +13,7 @@ Chromosome_Length::Chromosome_Length(unsigned int aPrecision,
       unsigned int aNDIM, const std::vector<double>& adomain) :
       thePrecision(aPrecision), theNDIM(aNDIM), thedomain(adomain)
 {
-   if(theNDIM != domain.size() / 2)
+   if(theNDIM != thedomain.size() / 2)
    {
       throw;
    }
@@ -41,7 +41,7 @@ void Chromosome_Length::buildChromosome()
    #pragma omp for ordered schedule(dynamic)
    for(unsigned int i = 0; i < theNDIM; ++i)
    {
-      unsigned int length = computeLength(domain[2 * i], domain[2 * i + 1]);
+      unsigned int length = computeLength(thedomain[2 * i], thedomain[2 * i + 1]);
 
       #pragma omp ordered
       theLengths[i] = length;

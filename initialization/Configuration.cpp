@@ -10,7 +10,7 @@
 #include <random>
 
 Configuration::Configuration(unsigned int aSizeOfPopulation,
-      Chromosome& aChromosome) :
+      Chromosome& aChromosome) noexcept :
       mSizeOfPopulation(aSizeOfPopulation)
 {
    mPopulation.reserve(mSizeOfPopulation);
