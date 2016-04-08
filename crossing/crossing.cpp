@@ -1,9 +1,9 @@
 
 
-#include <iostream>
+
 #include "crossing.h"
 #include "GA_Typedefs.h"
-//#include "Population.h"
+
 #include <random>
 #include <vector>
 #include <omp.h>
@@ -11,11 +11,11 @@
 void crossing::crossover()
 {
 
- std::vector<unsigned int> chosen;
+   std::vector<unsigned int> chosen;
 
- std::default_random_engine generator;
- std::uniform_real_distribution<double> distribution(0.0,1.0);
- std::vector<double> randomvector(fpop.size(), 0.0);
+   std::default_random_engine generator;
+   std::uniform_real_distribution<double> distribution(0.0, 1.0);
+   std::vector<double> randomvector(fpop.size(), 0.0);
 	
 	for(unsigned int i=0; i < fpop.size(); i++ )   
 	{        
@@ -24,7 +24,6 @@ void crossing::crossover()
 		if(randomvector[i] < 0.25)
       {
       	chosen.push_back(i);
-			//std::cout<<"i = "<<i<<std::endl;
       }
 	}
 	

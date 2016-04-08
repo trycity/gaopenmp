@@ -1,3 +1,7 @@
+/**
+ * @file Chromosome_Length.h
+ * @author ikhan
+ */
 
 #include "crossing_wrap.h"
 
@@ -5,7 +9,8 @@
 #include "TwoPointCrossing.h"
 
 
-crossing_wrap::crossing_wrap(POPULATION& apop, choice achoice):mpop(apop), mchoice(achoice)
+crossing_wrap::crossing_wrap(POPULATION& apop, choice achoice) noexcept :
+                            mpop(apop), mchoice(achoice)
 {
 
 }

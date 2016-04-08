@@ -1,3 +1,7 @@
+/**
+ * @file Chromosome_Length.h
+ * @author ikhan
+ */
 
 #ifndef CROSSING_WRAP_H
 #define CROSSING_WRAP_H
@@ -8,18 +12,31 @@
 class crossing_wrap
 {
  public:
-  
-	crossing_wrap(POPULATION& apop, choice achoice);
+  /**
+   * ctor
+   *
+   * @param apop
+   * @param achoice
+   */
+	crossing_wrap(POPULATION& apop, choice achoice) noexcept;
+
+	/**
+	 * dtor
+	 */
 	~crossing_wrap();
- void optioncross();
+
+	/**
+	 *
+	 */
+   void optioncross();
    
  private:
-  void crossingone();
-  void crossingtwo();
+   void crossingone();
+   void crossingtwo();
 
-  POPULATION& mpop;
-  choice mchoice;
-	//void (crossing_wrap::*fPointer)(void);
+   POPULATION& mpop;
+   choice mchoice;
+
 #ifdef UNIT_TEST
    friend class crossing_wraptest;
    
